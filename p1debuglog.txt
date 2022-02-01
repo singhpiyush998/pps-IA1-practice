@@ -1,0 +1,62 @@
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x81c: file p1original.c, line 22.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p1original.c:22
+22  {
+(gdb) n
+24    input(&num1, &num2);
+(gdb) s
+input (a=0x7fff7180659c, b=0x7fff718065a0) at p1original.c:5
+5     printf("Enter the first number:\n");
+(gdb) n
+Enter the first number:
+6     scanf("%d", a);
+(gdb) n
+5
+7     printf("Enter the second number:\n");
+(gdb) p *a
+$1 = 5
+(gdb) n
+Enter the second number:
+8     scanf("%d", b);
+(gdb) 
+7
+9   }
+(gdb) p *b
+$2 = 7
+(gdb) n
+main () at p1original.c:25
+25    add(num1, num2, &sum);
+(gdb) s
+add (a=5, b=7, sum=0x7fff718065a4) at p1original.c:13
+13    *sum = a + b;
+(gdb) n
+14  }
+(gdb) p *sum
+$3 = 12
+(gdb) n
+main () at p1original.c:26
+26    output(num1, num2, sum);
+(gdb) s
+output (a=5, b=7, sum=12) at p1original.c:18
+18    printf("Sum of %d + %d is %d\n", a, b, sum);
+(gdb) n
+Sum of 5 + 7 is 12
+19  }
+(gdb) n
+main () at p1original.c:27
+27    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 234) exited normally]
