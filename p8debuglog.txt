@@ -1,0 +1,128 @@
+ gcc -g p8original.c 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa19: file p8original.c, line 62.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p8original.c:62
+62  {
+(gdb) n
+63    int length = get_n();
+(gdb) s
+get_n () at p8original.c:9
+9   {
+(gdb) n
+11    printf("Enter the length of the array:\n");
+(gdb) 
+Enter the length of the array:
+12    scanf("%d", &n);
+(gdb) 
+3
+13    return n;
+(gdb) p n
+$1 = 3
+(gdb) n
+14  }
+(gdb) 
+main () at p8original.c:64
+64    Complex data[length];
+(gdb) 
+65    input_n_complex(length, data);
+(gdb) s
+input_n_complex (n=3, c=0x7ffdb882a070) at p8original.c:26
+26    for (int i = 0; i < n; i++)
+(gdb) n
+28      c[i] = input_complex();
+(gdb) 
+Enter the real and imaginary part of complex number separated by a space or linebreak:
+
+
+4 3
+26    for (int i = 0; i < n; i++)
+(gdb) 
+28      c[i] = input_complex();
+(gdb) 
+Enter the real and imaginary part of complex number separated by a space or linebreak:
+3 2
+26    for (int i = 0; i < n; i++)
+(gdb) 
+28      c[i] = input_complex();
+(gdb) 
+Enter the real and imaginary part of complex number separated by a space or linebreak:
+1 1
+26    for (int i = 0; i < n; i++)
+(gdb) 
+30  }
+(gdb) 
+main () at p8original.c:66
+66    Complex sum = add_n_complex(length, data);
+(gdb) s
+add_n_complex (n=3, c=0x7ffdb882a070) at p8original.c:43
+43    sum.real = 0;
+(gdb) n
+44    sum.imaginary = 0;
+(gdb) 
+45    for (int i = 0; i < n; i++)
+(gdb) 
+47      sum = add(sum, c[i]);
+(gdb) 
+45    for (int i = 0; i < n; i++)
+(gdb) 
+47      sum = add(sum, c[i]);
+(gdb) 
+45    for (int i = 0; i < n; i++)
+(gdb) 
+47      sum = add(sum, c[i]);
+(gdb) 
+45    for (int i = 0; i < n; i++)
+(gdb) 
+49    return sum;
+(gdb) 
+50  }
+(gdb) p sum
+$2 = {real = 8, imaginary = 6}
+(gdb) n
+main () at p8original.c:67
+67    output(length, data, sum);
+(gdb) s
+output (n=3, c=0x7ffdb882a070, result=...) at p8original.c:54
+54    for (int i = 0; i < n - 1; i++)
+(gdb) n
+56      printf("%0.1f + %0.1fi\n", c[i].real, c[i].imaginary);
+(gdb) 
+4.0 + 3.0i
+54    for (int i = 0; i < n - 1; i++)
+(gdb) 
+56      printf("%0.1f + %0.1fi\n", c[i].real, c[i].imaginary);
+(gdb) 
+3.0 + 2.0i
+54    for (int i = 0; i < n - 1; i++)
+(gdb) 
+58    printf("%0.1f + %0.1fi is\n%0.1f + %0.1fi\n", c[n-1].real, c[n-1].imaginary, result.real, result.imaginary);
+(gdb) 
+1.0 + 1.0i is
+8.0 + 6.0i
+59  }
+(gdb) n
+main () at p8original.c:68
+68    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 56) exited normally]
