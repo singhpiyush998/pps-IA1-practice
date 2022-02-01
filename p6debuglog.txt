@@ -1,0 +1,77 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8d4: file p6final.c, line 35.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p6final.c:35
+35  {
+(gdb) n
+37    input_two_string(str1, str2);
+(gdb) s
+input_two_string (a=0x7ffc71674720 "\001", b=0x7ffc71674740 "@\t \261>V")
+    at p6final.c:5
+5     printf("Enter the first string:\n");
+(gdb) n
+Enter the first string:
+6     scanf("%s", a);
+(gdb) n
+hello
+7     printf("Enter the second string:\n");
+(gdb) p a
+$1 = 0x7ffc71674720 "hello"
+(gdb) n
+Enter the second string:
+8     scanf("%s", b);
+(gdb) 
+hell
+9   }
+(gdb) p b
+$2 = 0x7ffc71674740 "hell"
+(gdb) n
+main () at p6final.c:38
+38    int result = strcmp(str1, str2);
+(gdb) s
+strcmp (a=0x7ffc71674720 "hello", b=0x7ffc71674740 "hell") at p6final.c:20
+20    for (i = 0; a[i] && a[i] == b[i]; i++);
+(gdb) n
+21    return a[i] - b[i];
+(gdb) 
+22  }
+(gdb) 
+main () at p6final.c:39
+39    output(str1, str2, result);
+(gdb) p result
+$3 = 111
+(gdb) s
+output (a=0x7ffc71674720 "hello", b=0x7ffc71674740 "hell", result=111)
+    at p6final.c:26
+26    if (result > 0)
+(gdb) n
+27      printf("%s is greater than %s\n", a, b);
+(gdb) 
+hello is greater than hell
+32  }
+(gdb) 
+main () at p6final.c:40
+40    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 914) exited normally]
+(gdb) q
