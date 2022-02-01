@@ -1,0 +1,207 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x81c: file p1original.c, line 22.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p1original.c:22
+22  {
+(gdb) n
+24    input(&num1, &num2);
+(gdb) s
+input (a=0x7fff7180659c, b=0x7fff718065a0) at p1original.c:5
+5     printf("Enter the first number:\n");
+(gdb) n
+Enter the first number:
+6     scanf("%d", a);
+(gdb) n
+5
+7     printf("Enter the second number:\n");
+(gdb) p *a
+$1 = 5
+(gdb) n
+Enter the second number:
+8     scanf("%d", b);
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x833: file p2final.c, line 28.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p2final.c:28
+28    int num1 = input();
+(gdb) s
+input () at p2final.c:4
+4   {
+(gdb) n
+6     printf("Enter a number:\n");
+(gdb) n
+Enter a number:
+7     scanf("%d", &num);
+(gdb) n
+2
+8     return num;
+(gdb) p num
+$1 = 2
+(gdb) n
+9   }
+(gdb) n
+main () at p2final.c:29
+29    int num2 = input();
+(gdb) n
+Enter a number:
+2
+30    int num3 = input();
+(gdb) p num2
+$2 = 2
+(gdb) n
+Enter a number:
+1
+32    int largest = cmp(num1, num2, num3);
+(gdb) p num
+$3 = num
+(gdb) p num3
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute i
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x849: file p3final.c, line 32.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p3final.c:32
+32    int n = input_n();
+(gdb) s
+input_n () at p3final.c:4
+4   {
+(gdb) n
+6     printf("Enter the number:\n");
+(gdb) n
+Enter the number:
+7     scanf("%d", &n);
+(gdb) n
+5
+8     return n;
+(gdb) p n
+$1 = 5
+(gdb) n
+9   }
+(gdb) n
+main () at p3final.c:33
+33    int sum = sum_n(n);
+(gdb) s
+sum_n (n=5) at p3final.c:13
+13    int sum = 0;
+(gdb) n
+14    for (int i = 1; i <= n; i++)
+(gdb) n
+16      sum += i;
+(gdb) 
+14    for (int i = 1; i <= n; i++)
+(gdb) 
+16      sum += i;
+(gdb) 
+14    for (int i = 1; i <= n; i++)
+(gdb) 
+16      sum += i;
+(gdb) 
+14    for (int i = 1; i <= n; i++)
+(gdb) 
+16      sum += i;
+(gdb) 
+14    for (int i = 1; i <= n; i++)
+(gdb) 
+16      sum += i;
+(gdb) 
+14    for (int i = 1; i <= n; i++)
+(gdb) 
+18    return sum;
+(gdb) 
+19  }
+(gdb) p sum
+$2 = 15
+(gdb) n
+main () at p3final.c:34
+34    output(n, sum);
+(gdb) s
+output (n=5, sum=15) at p3final.c:23
+23    for (int i = 1; i < n; i++)
+(gdb) n
+25      printf("%d+", i);
+(gdb) 
+23    for (int i = 1; i < n; i++)
+(gdb) 
+25      printf("%d+", i);
+(gdb) 
+23    for (int i = 1; i < n; i++)
+(gdb) 
+25      printf("%d+", i);
+(gdb) 
+23    for (int i = 1; i < n; i++)
+(gdb) 
+25      printf("%d+", i);
+(gdb) 
+23    for (int i = 1; i < n; i++)
+(gdb) 
+27    printf("%d is %d\n", n, sum);
+(gdb) 
+1+2+3+4+5 is 15
+28  }
+(gdb) n
+main () at p3final.c:35
+35    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 539) exited normally]
+(gdb) q
