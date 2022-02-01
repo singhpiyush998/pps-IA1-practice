@@ -1,0 +1,125 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x81c: file p1original.c, line 22.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p1original.c:22
+22  {
+(gdb) n
+24    input(&num1, &num2);
+(gdb) s
+input (a=0x7fff7180659c, b=0x7fff718065a0) at p1original.c:5
+5     printf("Enter the first number:\n");
+(gdb) n
+Enter the first number:
+6     scanf("%d", a);
+(gdb) n
+5
+7     printf("Enter the second number:\n");
+(gdb) p *a
+$1 = 5
+(gdb) n
+Enter the second number:
+8     scanf("%d", b);
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x833: file p2final.c, line 28.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p2final.c:28
+28    int num1 = input();
+(gdb) s
+input () at p2final.c:4
+4   {
+(gdb) n
+6     printf("Enter a number:\n");
+(gdb) n
+Enter a number:
+7     scanf("%d", &num);
+(gdb) n
+2
+8     return num;
+(gdb) p num
+$1 = 2
+(gdb) n
+9   }
+(gdb) n
+main () at p2final.c:29
+29    int num2 = input();
+(gdb) n
+Enter a number:
+2
+30    int num3 = input();
+(gdb) p num2
+$2 = 2
+(gdb) n
+Enter a number:
+1
+32    int largest = cmp(num1, num2, num3);
+(gdb) p num
+$3 = num
+(gdb) p num3
+$4 = 1
+(gdb) s
+cmp (a=2, b=2, c=1) at p2final.c:13
+13    int large = a;
+(gdb) n
+14    if (large < b)
+(gdb) n
+16    if (large < c)
+(gdb) n
+18    return large;  
+(gdb) p large
+$5 = 2
+(gdb) n
+19  }
+(gdb) n
+main () at p2final.c:33
+33    output(num1, num2, num3, largest);
+(gdb) s
+output (a=2, b=2, c=1, largest=2) at p2final.c:23
+23    printf("The largest of %d, %d and %d is %d\n", a, b, c, largest);
+(gdb) n
+The largest of 2, 2 and 1 is 2
+24  }
+(gdb) n
+main () at p2final.c:34
+34    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 377) exited normally]
+(gdb) q
