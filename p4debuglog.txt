@@ -1,0 +1,153 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8f1: file p4final.c, line 40.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p4final.c:40
+40  {
+(gdb) n
+41    int length = input_array_size();
+(gdb) s
+input_array_size () at p4final.c:4
+4   {
+(gdb) n
+6     printf("Enter the length of the array:\n");
+(gdb) 
+Enter the length of the array:
+7     scanf("%d", &length);
+(gdb) 
+5
+8     return length;
+(gdb) p length
+$1 = 5
+(gdb) n
+9   }
+(gdb) 
+main () at p4final.c:42
+42    int data[length];
+(gdb) 
+43    input_array(length, data);
+(gdb) s
+input_array (n=5, a=0x7ffed493c490) at p4final.c:13
+13    printf("Enter the values of array:\n");
+(gdb) n
+Enter the values of array:
+14    for (int i = 0; i < n; i++)
+(gdb) 
+16      scanf("%d", &a[i]);
+(gdb) 
+7
+14    for (int i = 0; i < n; i++)
+(gdb) 
+16      scanf("%d", &a[i]);
+(gdb) 
+4
+14    for (int i = 0; i < n; i++)
+(gdb) 
+16      scanf("%d", &a[i]);
+(gdb) 
+2
+14    for (int i = 0; i < n; i++)
+(gdb) 
+16      scanf("%d", &a[i]);
+(gdb) 
+8
+14    for (int i = 0; i < n; i++)
+(gdb) 
+16      scanf("%d", &a[i]);
+(gdb) 
+9
+14    for (int i = 0; i < n; i++)
+(gdb) 
+18  }
+(gdb) 
+main () at p4final.c:44
+44    int sum = sum_n_arrays(length, data);
+(gdb) p data@length
+$2 = {{7, 4, 2, 8, 9}, {32766, 1419774224, 21930, 5, 32766}, {4, 0, 
+    -728513392, 32766, -374486272}, {-197569856, 675482432, 32586, 0, 0}, {
+    1419773536, 21930, -728513056, 32766, 0}}
+(gdb) s
+sum_n_arrays (n=5, a=0x7ffed493c490) at p4final.c:22
+22    int sum = 0;
+(gdb) n
+23    for (int i = 0; i < n; i++)
+(gdb) 
+25      sum += a[i];
+(gdb) 
+23    for (int i = 0; i < n; i++)
+(gdb) 
+25      sum += a[i];
+(gdb) 
+23    for (int i = 0; i < n; i++)
+(gdb) 
+25      sum += a[i];
+(gdb) 
+23    for (int i = 0; i < n; i++)
+(gdb) 
+25      sum += a[i];
+(gdb) 
+23    for (int i = 0; i < n; i++)
+(gdb) 
+25      sum += a[i];
+(gdb) 
+23    for (int i = 0; i < n; i++)
+(gdb) 
+27    return sum;
+(gdb) p sum
+$3 = 30
+(gdb) p *a@n
+$4 = {7, 4, 2, 8, 9}
+(gdb) n
+28  }
+(gdb) n
+main () at p4final.c:45
+45    output(length, data, sum);
+(gdb) s
+output (n=5, a=0x7ffed493c490, sum=30) at p4final.c:32
+32    for (int i = 0; i < n - 1; i++)
+(gdb) n
+34      printf("%d+", a[i]);
+(gdb) 
+32    for (int i = 0; i < n - 1; i++)
+(gdb) 
+34      printf("%d+", a[i]);
+(gdb) 
+32    for (int i = 0; i < n - 1; i++)
+(gdb) 
+34      printf("%d+", a[i]);
+(gdb) 
+32    for (int i = 0; i < n - 1; i++)
+(gdb) 
+34      printf("%d+", a[i]);
+(gdb) 
+32    for (int i = 0; i < n - 1; i++)
+(gdb) 
+36    printf("%d is %d\n", a[n-1], sum);
+(gdb) 
+7+4+2+8+9 is 30
+37  }
+(gdb) 
+main () at p4final.c:46
+46    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 714) exited normally]
+(gdb) q
